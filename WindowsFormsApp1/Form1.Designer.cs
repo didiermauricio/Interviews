@@ -109,10 +109,10 @@ namespace WindowsFormsApp1
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(353, 136);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(70, 17);
+            this.radioButton2.Size = new System.Drawing.Size(78, 17);
             this.radioButton2.TabIndex = 4;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Knoledge";
+            this.radioButton2.Text = "Knowledge";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton3
