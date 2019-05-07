@@ -31,6 +31,9 @@ namespace WindowsFormsApp1
         public InterviewerHelper()
         {
             InitializeComponent();
+            Createfolder();
+            CreateQuestionsFile();
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,9 +63,21 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddToReviewedQuestionList();
-            CleanRadioButtons();
-            BarExample(); 
+            if (comboBox1.Text != null)
+            {
+                if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked || radioButton4.Checked)
+                {
+                    AddToReviewedQuestionList();
+                    CleanRadioButtons();
+                    CleanAdditionalNotes();
+                    BarExample();
+                }
+            }
+        }
+
+        private void CleanAdditionalNotes()
+        {
+            richTextBox1.Text = string.Empty;
         }
 
         private void CleanRadioButtons()
@@ -75,20 +90,12 @@ namespace WindowsFormsApp1
 
         private void AddToReviewedQuestionList()
         {
-            
-            if (comboBox1.Text != null)
-            {
-                if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked || radioButton4.Checked)
-                {
                     CalculateLevel();
                     SaveResults();
                     sumpoint = sumpoint + CalculatePoint();
                     listBox1.Items.Add(comboBox1.Text);
                     comboBox1.Items.Remove(comboBox1.SelectedItem);
-                    comboBox1.Text = "";
-                }
-            }
-            
+                    comboBox1.Text = "";               
         }
 
         private void CalculateLevel()
@@ -258,7 +265,7 @@ namespace WindowsFormsApp1
 
             //Add some datapoints so the series. in this case you can pass the values to this method
             chart1.Series[seriesname].Points.AddXY("Experience", level3);
-            chart1.Series[seriesname].Points.AddXY("Knoledge", level2);
+            chart1.Series[seriesname].Points.AddXY("Knowledge", level2);
             chart1.Series[seriesname].Points.AddXY("Unknown", level1);
             chart1.Series[seriesname].Points.AddXY("Expertice", level4);
             //chart1.Series[seriesname].Points.AddXY("MyPointName4", 10);

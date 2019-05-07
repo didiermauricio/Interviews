@@ -164,7 +164,7 @@ namespace WindowsFormsApp1
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(10, 19);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(439, 199);
+            this.listBox1.Size = new System.Drawing.Size(439, 329);
             this.listBox1.TabIndex = 9;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -246,7 +246,7 @@ namespace WindowsFormsApp1
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(426, 199);
+            this.chart1.Size = new System.Drawing.Size(426, 329);
             this.chart1.TabIndex = 16;
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
@@ -294,7 +294,7 @@ namespace WindowsFormsApp1
             this.groupBox3.Controls.Add(this.listBox1);
             this.groupBox3.Location = new System.Drawing.Point(57, 438);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(897, 227);
+            this.groupBox3.Size = new System.Drawing.Size(897, 370);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Summary";
@@ -332,7 +332,7 @@ namespace WindowsFormsApp1
                 // Check if file already exists. If yes, delete it.     
                 if (!fi.Exists)
                 {
-                    fi.Delete();
+                    //fi.Delete();
                 
 
                 // Create a new file     
