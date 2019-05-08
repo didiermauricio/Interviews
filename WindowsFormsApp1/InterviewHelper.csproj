@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>E:\OneDrive\Documentos\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\itextsharp\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
