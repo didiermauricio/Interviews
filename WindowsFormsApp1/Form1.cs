@@ -31,9 +31,15 @@ namespace WindowsFormsApp1
         public InterviewerHelper()
         {
             InitializeComponent();
+            LoadDate();
             Createfolder();
             CreateQuestionsFile();
             
+        }
+
+        private void LoadDate()
+        {
+            textBox2.Text = DateTime.Today.ToString("dd-MM-yyyy");
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -276,6 +282,11 @@ namespace WindowsFormsApp1
             chart1.Series[seriesname].Points.AddXY("Unknown", level1);
             chart1.Series[seriesname].Points.AddXY("Expertice", level4);
             //chart1.Series[seriesname].Points.AddXY("MyPointName4", 10);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
