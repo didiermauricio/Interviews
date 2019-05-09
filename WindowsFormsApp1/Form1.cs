@@ -170,25 +170,29 @@ namespace WindowsFormsApp1
             // Create an instance to the PDF file by creating an instance of the PDF   
             // Writer class using the document and the filestrem in the constructor.  
 
+            //Fonts
+            BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            iTextSharp.text.Font normalFont = new iTextSharp.text.Font(bf,14, iTextSharp.text.Font.NORMAL);
+            iTextSharp.text.Font bigFont = new iTextSharp.text.Font(bf, 20, iTextSharp.text.Font.UNDERLINE);
+
+            String candidateName = "Candidate name: " + textBox1.Text;
+            String interviewDate = "Interview Date: " + textBox2.Text;
+            String interviewerName = "Interviewer name: " + textBox3.Text;
+            String whiteSpace = string.Empty;
+            String title = "Interview Report";
+
+
             PdfWriter writer = PdfWriter.GetInstance(document, fs);
             
             document.Open();
             document.AddTitle("Interview Report");
 
-            Paragraph title = new Paragraph("Interview Summary");
-            document.Add(title);
-
-            Paragraph Name = new Paragraph("Candidate name: "+textBox1.Text);
-            document.Add(Name);
-
-            Paragraph Date = new Paragraph("Interview Date: " + textBox2.Text);
-            document.Add(Date);
-
-            Paragraph Interviewer = new Paragraph("Interviewer name: " + textBox3.Text);
-            document.Add(Interviewer);
-
-            Paragraph space1 = new Paragraph("");
-            document.Add(space1);
+            WriteInDocumentWithChunk(document, whiteSpace, bigFont);
+            WriteInDocument(document, candidateName, normalFont);
+            WriteInDocument(document, interviewDate, normalFont);
+            WriteInDocument(document, interviewerName, normalFont);
+            WriteInDocument(document, whiteSpace, normalFont);
+            WriteInDocument(document, whiteSpace, normalFont);
 
             AddGraphToPDF(document);
             PrintReportContet(document);
@@ -200,6 +204,18 @@ namespace WindowsFormsApp1
             fs.Close();
 
             PresentReport(subPath);
+        }
+
+        private void WriteInDocument(Document document, string text, iTextSharp.text.Font font)
+        {
+            Paragraph paragraf = new Paragraph(text, font);
+            document.Add(paragraf);
+        }
+        private void WriteInDocumentWithChunk(Document document, string text, iTextSharp.text.Font font)
+        {
+            Paragraph paragraf = new Paragraph(new Chunk(text, font));
+            paragraf.SetAlignment(Element.ALIGN_CENTER.ToString());
+            document.Add(paragraf);
         }
 
         private void PresentReport(string subPath)
@@ -217,7 +233,7 @@ namespace WindowsFormsApp1
 
                 iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(memoryStream.GetBuffer());
 
-                img.ScalePercent(100f);
+                img.ScalePercent(70f);
                 img.Alignment = iTextSharp.text.Image.ALIGN_CENTER;
 
                 doc.Add(img);                
