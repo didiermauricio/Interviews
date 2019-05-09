@@ -192,6 +192,13 @@ namespace WindowsFormsApp1
             writer.Close();
             // Always close open filehandles explicity  
             fs.Close();
+
+            PresentReport(subPath);
+        }
+
+        private void PresentReport(string subPath)
+        {
+            System.Diagnostics.Process.Start(subPath);
         }
 
         private void AddGraphToPDF(Document doc)
