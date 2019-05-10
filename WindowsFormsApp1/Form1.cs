@@ -187,7 +187,7 @@ namespace WindowsFormsApp1
             document.Open();
             document.AddTitle("Interview Report");
 
-            WriteInDocumentWithChunk(document, whiteSpace, bigFont);
+            WriteInDocumentWithChunk(document, title, bigFont);
             WriteInDocument(document, candidateName, normalFont);
             WriteInDocument(document, interviewDate, normalFont);
             WriteInDocument(document, interviewerName, normalFont);
@@ -214,7 +214,7 @@ namespace WindowsFormsApp1
         private void WriteInDocumentWithChunk(Document document, string text, iTextSharp.text.Font font)
         {
             Paragraph paragraf = new Paragraph(new Chunk(text, font));
-            paragraf.SetAlignment(Element.ALIGN_CENTER.ToString());
+            paragraf.Alignment = Element.ALIGN_CENTER;
             document.Add(paragraf);
         }
 
